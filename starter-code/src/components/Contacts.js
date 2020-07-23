@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import contacts from "../contacts.json";
+import TableContent from "./TableContent";
 
 const initialState = contacts.slice(0, 5);
 
@@ -48,20 +49,7 @@ const Contacts = () => {
             {state.map((contact, idx) => {
               return (
                 <tr key={contact.id}>
-                  <td>
-                    <img
-                      src={contact.pictureUrl}
-                      style={{ height: "100px" }}
-                      alt=''
-                    />{" "}
-                  </td>
-                  <td>{contact.name}</td>
-                  <td>{contact.popularity}</td>
-                  <td>
-                  <button onClick={() => handleDeleteClick(contact.id)}>
-                    Delete
-                  </button>
-                  </td> 
+                  <TableContent contact={contact} handleDeleteClick={handleDeleteClick}/>
                 </tr>
               )
             })}
